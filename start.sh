@@ -7,8 +7,6 @@ mkdir -pv $TARGET
 
 $GEN "git push"                     $TARGET/git_push.png                &
 $GEN "git push -f"                  $TARGET/git_push_f.png              &
-$GEN "git push -f"  "origin master" $TARGET/git_push_f_master.png       &
-$GEN "git push -f"  "origin main"   $TARGET/git_push_f_main.png         &
 
 $GEN "git pull"                     $TARGET/git_pull.png                &
 
