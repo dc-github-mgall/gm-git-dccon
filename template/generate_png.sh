@@ -7,15 +7,19 @@ if [ -z "$SIZE" ]; then
     SIZE=100,100
 fi
 
+if [ -z "$FONT_SIZE" ]; then
+    FONT_SIZE=18px
+fi
+
 if [ "$#" -eq 3 ]; then
-    sed -e "s/%TEXT1/$1/" -e "s/%TEXT2/$2/" "$SCRIPT_PATH/two-line.html" > "$TEMP_HTML_PATH"
+    sed -e "s/%SIZE/$FONT_SIZE/" -e "s/%TEXT1/$1/" -e "s/%TEXT2/$2/" "$SCRIPT_PATH/two-line.html" > "$TEMP_HTML_PATH"
     chromium --headless --screenshot="$3" --window-size="$SIZE" "$TEMP_HTML_PATH"
     rm "$TEMP_HTML_PATH"
     exit $?
 fi
 
 if [ "$#" -eq 2 ]; then
-    sed -e "s/%TEXT/$1/" "$SCRIPT_PATH/one-line.html" > "$TEMP_HTML_PATH"
+    sed -e "s/%SIZE/$FONT_SIZE/" -e "s/%TEXT/$1/" "$SCRIPT_PATH/one-line.html" > "$TEMP_HTML_PATH"
     chromium --headless --screenshot="$2" --window-size="$SIZE" "$TEMP_HTML_PATH"
     rm "$TEMP_HTML_PATH"
     exit $?

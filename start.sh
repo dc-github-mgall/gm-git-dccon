@@ -6,7 +6,8 @@ TARGET=output
 mkdir -pv $TARGET
 
 # Generate list.png
-SIZE=70,50 $GEN     "Git"           $TARGET/list.png                    &
+FONT_SIZE=36px SIZE=70,50 \
+$GEN "Git"                          $TARGET/list.png                    &
 
 $GEN "git push"                     $TARGET/git_push.png                &
 $GEN "git push -f"                  $TARGET/git_push_f.png              &
