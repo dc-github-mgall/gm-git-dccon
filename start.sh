@@ -33,6 +33,7 @@ $GEN "git tag"      "힙"            $TARGET/git_tag_hipster.png         &
 $GEN "git tag"      "함"            $TARGET/git_tag_functional.png      &
 $GEN "git tag"      "땔"            $TARGET/git_tag_firewood.png        &
 $GEN "git tag"      "찐"            $TARGET/git_tag_wls.png             &
+$GEN "git tag"      "틀"            $TARGET/git_tag_xmf.png             &
 $GEN "git tag"      "러"            $TARGET/git_tag_rust.png            &
 
 $GEN "git add"                      $TARGET/git_add.png                 &
