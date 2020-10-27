@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 SCRIPT_PATH=$(dirname $(realpath $0))
 TEMP_HTML_PATH=$(mktemp --suffix=.html)
@@ -13,12 +13,7 @@ if [ -z "$FONT_SIZE" ]; then
 fi
 
 if [ "$#" -eq 3 ]; then
-    if [ "$2" = "--img" ]; then
-        sed -e "s/%SIZE/$FONT_SIZE/" -e "s %TEXT $1 " "$SCRIPT_PATH/img.html" > "$TEMP_HTML_PATH"
-    else
-        sed -e "s/%SIZE/$FONT_SIZE/" -e "s/%TEXT1/$1/" -e "s/%TEXT2/$2/" "$SCRIPT_PATH/two-line.html" > "$TEMP_HTML_PATH"
-    fi
-
+    sed -e "s/%SIZE/$FONT_SIZE/" -e "s/%TEXT1/$1/" -e "s/%TEXT2/$2/" "$SCRIPT_PATH/two-line.html" > "$TEMP_HTML_PATH"
     SCREENSHOT_PATH="$3"
 fi
 

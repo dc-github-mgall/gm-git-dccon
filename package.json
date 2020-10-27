@@ -1,0 +1,22 @@
+{
+  "name": "gm-git-dccon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate_svg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dc-github-mgall/gm-git-dccon.git"
+  },
+  "author": "Riey",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dc-github-mgall/gm-git-dccon/issues"
+  },
+  "homepage": "https://github.com/dc-github-mgall/gm-git-dccon#readme",
+  "dependencies": {
+    "@primer/octicons": "^11.0.0"
+  }
+}
