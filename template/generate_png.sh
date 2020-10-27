@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -ex
 
 SCRIPT_PATH=$(dirname $(realpath $0))
 TEMP_HTML_PATH=$(mktemp --suffix=.html)
@@ -12,17 +13,22 @@ if [ -z "$FONT_SIZE" ]; then
 fi
 
 if [ "$#" -eq 3 ]; then
-    sed -e "s/%SIZE/$FONT_SIZE/" -e "s/%TEXT1/$1/" -e "s/%TEXT2/$2/" "$SCRIPT_PATH/two-line.html" > "$TEMP_HTML_PATH"
-    chromium --headless --screenshot="$3" --window-size="$SIZE" "$TEMP_HTML_PATH"
-    rm "$TEMP_HTML_PATH"
-    exit $?
+    if [ "$2" = "--img" ]; then
+        sed -e "s/%SIZE/$FONT_SIZE/" -e "s %TEXT $1 " "$SCRIPT_PATH/img.html" > "$TEMP_HTML_PATH"
+    else
+        sed -e "s/%SIZE/$FONT_SIZE/" -e "s/%TEXT1/$1/" -e "s/%TEXT2/$2/" "$SCRIPT_PATH/two-line.html" > "$TEMP_HTML_PATH"
+    fi
+
+    SCREENSHOT_PATH="$3"
 fi
 
 if [ "$#" -eq 2 ]; then
     sed -e "s/%SIZE/$FONT_SIZE/" -e "s/%TEXT/$1/" "$SCRIPT_PATH/one-line.html" > "$TEMP_HTML_PATH"
-    chromium --headless --screenshot="$2" --window-size="$SIZE" "$TEMP_HTML_PATH"
-    rm "$TEMP_HTML_PATH"
-    exit $?
+    SCREENSHOT_PATH="$2"
 fi
+
+chromium --headless --screenshot="$SCREENSHOT_PATH" --window-size="$SIZE" "$TEMP_HTML_PATH"
+rm "$TEMP_HTML_PATH"
+exit $?
 
 echo "Usage: generate_png.sh (<TEXT>){1-2} <OUT_PATH>"

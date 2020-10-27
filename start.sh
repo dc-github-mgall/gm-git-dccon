@@ -50,5 +50,8 @@ $GEN "git init"                     $TARGET/git_init.png                &
 $GEN "git log"                      $TARGET/git_log.png                 &
 $GEN "git gc"                       $TARGET/git_gc.png                  &
 
+# public domain
+$GEN "https://upload.wikimedia.org/wikipedia/commons/e/e7/Empty_Star.svg" "--img"   $TARGET/git_star.png &
+
 
 wait
