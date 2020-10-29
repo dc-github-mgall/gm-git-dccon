@@ -1,3 +1,5 @@
 /output
 /icons
 /node_modules
+/release*
+*.tar.bz
